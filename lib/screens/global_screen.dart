@@ -93,7 +93,6 @@ class _GlobalScreenState extends State<GlobalScreen> {
             _newDeaths = formatNumber.format(_globalDataItem.newDeaths);
             _newRecovered = formatNumber.format(_globalDataItem.newRecovered);
             _timeLine = formatDate.format(dateTime);
-            print(_timeLine);
           }
 
           return SingleChildScrollView(
