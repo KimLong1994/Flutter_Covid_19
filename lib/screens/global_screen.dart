@@ -124,23 +124,25 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        "Total Cases About Covid-19",
+                        "Total Cases",
                         style: GoogleFonts.robotoSlab(
                           color: Colors.black54,
-                          fontSize: 65.sp,
+                          fontSize: 63.sp,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ],
                   ),
                 ),
+
+                // Receive GlobalDataItem From Internet
                 Container(
                   margin: EdgeInsetsResponsive.only(
                       bottom: 45, left: 45, right: 45),
                   child: Row(
                     children: <Widget>[
                       Text(
-                        _timeLine,
+                        "Date time now: $_timeLine",
                         style: GoogleFonts.robotoSlab(
                           color: Colors.grey[500],
                           fontSize: 55.sp,
@@ -150,8 +152,6 @@ class _GlobalScreenState extends State<GlobalScreen> {
                     ],
                   ),
                 ),
-
-                // Receive GlobalDataItem From Internet
                 GlobalItemWidget(
                   title: "Total Confirmed",
                   statistic: _confirmed,
