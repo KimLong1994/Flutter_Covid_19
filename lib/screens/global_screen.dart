@@ -1,18 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttercovid19/widgets/global_item_widget.dart';
 
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
+import 'package:fluttercovid19/widgets/carousel_widget.dart';
+import 'package:fluttercovid19/widgets/global_item_widget.dart';
+
 import 'package:fluttercovid19/models/global_data.dart';
 import 'package:fluttercovid19/models/global_data_item.dart';
-
-import 'package:fluttercovid19/widgets/carousel_widget.dart';
-
 import 'package:fluttercovid19/repositories/global_data_repository.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -26,7 +24,7 @@ class GlobalScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GlobalScreenState createState() => _GlobalScreenState();
+  State createState() => _GlobalScreenState();
 }
 
 class _GlobalScreenState extends State<GlobalScreen> {
@@ -95,92 +93,104 @@ class _GlobalScreenState extends State<GlobalScreen> {
             _timeLine = formatDate.format(dateTime);
           }
 
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      width: double.infinity,
-                      height: 550.sp,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1ec8c8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x0d000000),
-                            blurRadius: 4.sp,
-                            spreadRadius: 2.sp,
+          return RefreshIndicator(
+            color: Color(0xFF1ec8c8),
+            semanticsLabel: "Loading...",
+            strokeWidth: 7.sp,
+            onRefresh: () {
+              setState(() {
+                _globalDataFuture =
+                    _globalDataRepository.get(path: widget.endPoint);
+              });
+              return _globalDataFuture;
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        width: double.infinity,
+                        height: 550.sp,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1ec8c8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x0d000000),
+                              blurRadius: 4.sp,
+                              spreadRadius: 2.sp,
+                            ),
+                          ],
+                        ),
+                      ),
+                      CarouselWidget(),
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsetsResponsive.only(
+                        top: 45, bottom: 5, left: 40, right: 40),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          "Total Cases",
+                          style: GoogleFonts.robotoSlab(
+                            color: Colors.black54,
+                            fontSize: 63.sp,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    CarouselWidget(),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsetsResponsive.only(
-                      top: 45, bottom: 5, left: 45, right: 45),
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        "Total Cases",
-                        style: GoogleFonts.robotoSlab(
-                          color: Colors.black54,
-                          fontSize: 63.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
                   ),
-                ),
 
-                // Receive GlobalDataItem From Internet
-                Container(
-                  margin: EdgeInsetsResponsive.only(
-                      bottom: 45, left: 45, right: 45),
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        "Date time now: $_timeLine",
-                        style: GoogleFonts.robotoSlab(
-                          color: Colors.grey[500],
-                          fontSize: 55.sp,
-                          fontWeight: FontWeight.w500,
+                  // Receive GlobalDataItem From Internet
+                  Container(
+                    margin: EdgeInsetsResponsive.only(
+                        bottom: 45, left: 40, right: 40),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          "Date time now: $_timeLine",
+                          style: GoogleFonts.robotoSlab(
+                            color: Colors.grey[500],
+                            fontSize: 55.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                GlobalItemWidget(
-                  title: "Total Confirmed",
-                  statistic: _confirmed,
-                ),
-                GlobalItemWidget(
-                  title: "Total Deaths",
-                  statistic: _deaths,
-                ),
-                GlobalItemWidget(
-                  title: "Total Recovered",
-                  statistic: _recovered,
-                ),
-                GlobalItemWidget(
-                  title: "Total Active",
-                  statistic: _active,
-                ),
-                GlobalItemWidget(
-                  title: "Total New Confirmed",
-                  statistic: _newConfirmed,
-                ),
-                GlobalItemWidget(
-                  title: "Total New Deaths",
-                  statistic: _newDeaths,
-                ),
-                GlobalItemWidget(
-                  title: "Total New Recovered",
-                  statistic: _newRecovered,
-                ),
-              ],
+                  GlobalItemWidget(
+                    title: "Total Confirmed",
+                    statistic: _confirmed,
+                  ),
+                  GlobalItemWidget(
+                    title: "Total Deaths",
+                    statistic: _deaths,
+                  ),
+                  GlobalItemWidget(
+                    title: "Total Recovered",
+                    statistic: _recovered,
+                  ),
+                  GlobalItemWidget(
+                    title: "Total Active",
+                    statistic: _active,
+                  ),
+                  GlobalItemWidget(
+                    title: "Total New Confirmed",
+                    statistic: _newConfirmed,
+                  ),
+                  GlobalItemWidget(
+                    title: "Total New Deaths",
+                    statistic: _newDeaths,
+                  ),
+                  GlobalItemWidget(
+                    title: "Total New Recovered",
+                    statistic: _newRecovered,
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -188,23 +198,3 @@ class _GlobalScreenState extends State<GlobalScreen> {
     );
   }
 }
-
-// Container(
-//         child: FutureBuilder(
-//           future: _globalDataFuture,
-//           builder: (BuildContext context, AsyncSnapshot<GlobalData> snapshot) {
-//             print(snapshot);
-//             switch (snapshot.connectionState) {
-//               case ConnectionState.none:
-//                 return Text('Press button to start.');
-//               case ConnectionState.active:
-//               case ConnectionState.waiting:
-//                 return Text('Awaiting result...');
-//               case ConnectionState.done:
-//                 if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-//                 return Text('Result: ${snapshot.data}');
-//             }
-//             return Container();
-//           },
-//         ),
-//       ),

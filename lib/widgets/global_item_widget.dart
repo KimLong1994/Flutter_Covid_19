@@ -18,9 +18,9 @@ class GlobalItemWidget extends StatelessWidget {
       height: 200.sp,
       width: double.infinity,
       margin: EdgeInsetsResponsive.only(
-        left: 45,
-        right: 45,
-        bottom: 25,
+        left: 40,
+        right: 40,
+        bottom: 20,
       ),
       decoration: BoxDecoration(
           color: Colors.white,

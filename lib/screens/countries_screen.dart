@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
 class CountriesScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(

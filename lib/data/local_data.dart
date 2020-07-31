@@ -3,7 +3,7 @@ import 'package:fluttercovid19/screens/countries_screen.dart';
 import 'package:fluttercovid19/screens/information_screen.dart';
 
 class LocalData {
-  static final List<Map<String, dynamic>> allScreens = [
+  final List<Map<String, dynamic>> allScreens = [
     {
       "title": "STATISTIC ABOUT COVID-19 GLOBAL",
       "screen": GlobalScreen(),
