@@ -18,19 +18,19 @@ class CarouselWidget extends StatelessWidget {
         dotSpacing: 50.sp,
         dotVerticalPadding: -40.sp,
         dotPosition: DotPosition.bottomCenter,
-        animationCurve: Curves.easeInCubic,
-        autoplayDuration: Duration(milliseconds: 5000),
+        animationCurve: Curves.easeInOutCirc,
+        autoplayDuration: Duration(seconds: 5),
         images: [
-          CarouselItemWidget(
-              image: "assets/images/doctor_stay_home_stay_safe.jpg"),
           CarouselItemWidget(
               image: "assets/images/thank_you_stay_home_stay_safe.jpg"),
           CarouselItemWidget(
-              image: "assets/images/wash_hand_stay_home_stay_safe.jpg"),
-          CarouselItemWidget(
               image: "assets/images/family_stay_home_stay_safe.jpg"),
           CarouselItemWidget(
+              image: "assets/images/doctor_stay_home_stay_safe.jpg"),
+          CarouselItemWidget(
               image: "assets/images/poster_stay_home_stay_safe.jpg"),
+          // CarouselItemWidget(
+          // image: "assets/images/wash_hand_stay_home_stay_safe.jpg"),
         ],
       ),
     );

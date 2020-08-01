@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'package:fluttercovid19/screens/countries_screen.dart';
+import 'package:fluttercovid19/screens/information_screen.dart';
 import 'package:fluttercovid19/screens/global_screen.dart';
 import 'package:fluttercovid19/screens/main_screen.dart';
 
@@ -23,6 +25,12 @@ Future setupGetIt() async {
   );
   getIt.registerLazySingleton<GlobalScreen>(
     () => GlobalScreen(),
+  );
+  getIt.registerLazySingleton<CountriesScreen>(
+    () => CountriesScreen(),
+  );
+  getIt.registerLazySingleton<InformationScreen>(
+    () => InformationScreen(),
   );
   getIt.registerLazySingleton<LocalData>(
     () => LocalData(),

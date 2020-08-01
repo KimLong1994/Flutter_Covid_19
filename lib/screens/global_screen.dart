@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import 'package:intl/intl.dart';
 import 'package:get_it/get_it.dart';
@@ -80,7 +81,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
 
             // Format GlobalDataItem
             var dateTime = DateTime.parse(_globalDataItem.lastUpdate);
-            var formatDate = DateFormat("dd-MM-yyyy HH:mm:ss");
+            var formatDate = DateFormat("dd/MM/yyyy HH:mm:ss");
             var formatNumber = NumberFormat.simpleCurrency(
                 locale: "en_US", decimalDigits: 0, name: "Cases: ");
             _confirmed = formatNumber.format(_globalDataItem.confirmed);
@@ -95,7 +96,6 @@ class _GlobalScreenState extends State<GlobalScreen> {
 
           return RefreshIndicator(
             color: Color(0xFF1ec8c8),
-            semanticsLabel: "Loading...",
             strokeWidth: 7.sp,
             onRefresh: () {
               setState(() {
@@ -129,11 +129,11 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   ),
                   Container(
                     margin: EdgeInsetsResponsive.only(
-                        top: 45, bottom: 5, left: 40, right: 40),
+                        top: 45, bottom: 5, left: 30, right: 30),
                     child: Row(
                       children: <Widget>[
                         Text(
-                          "Total Cases",
+                          "Total Global Data",
                           style: GoogleFonts.robotoSlab(
                             color: Colors.black54,
                             fontSize: 63.sp,
@@ -147,11 +147,11 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   // Receive GlobalDataItem From Internet
                   Container(
                     margin: EdgeInsetsResponsive.only(
-                        bottom: 45, left: 40, right: 40),
+                        bottom: 45, left: 30, right: 30),
                     child: Row(
                       children: <Widget>[
                         Text(
-                          "Date time now: $_timeLine",
+                          "Last Update Time: $_timeLine",
                           style: GoogleFonts.robotoSlab(
                             color: Colors.grey[500],
                             fontSize: 55.sp,
@@ -162,32 +162,39 @@ class _GlobalScreenState extends State<GlobalScreen> {
                     ),
                   ),
                   GlobalItemWidget(
-                    title: "Total Confirmed",
+                    title: "Confirmed",
                     statistic: _confirmed,
+                    icon: MaterialCommunityIcons.account_badge_alert,
                   ),
                   GlobalItemWidget(
-                    title: "Total Deaths",
+                    title: "Deaths",
                     statistic: _deaths,
+                    icon: MaterialCommunityIcons.alert_decagram,
                   ),
                   GlobalItemWidget(
-                    title: "Total Recovered",
+                    title: "Recovered",
                     statistic: _recovered,
+                    icon: MaterialCommunityIcons.heart,
                   ),
                   GlobalItemWidget(
-                    title: "Total Active",
+                    title: "Active",
                     statistic: _active,
+                    icon: MaterialCommunityIcons.blood_bag,
                   ),
                   GlobalItemWidget(
-                    title: "Total New Confirmed",
+                    title: "New Confirmed",
                     statistic: _newConfirmed,
+                    icon: MaterialCommunityIcons.new_box,
                   ),
                   GlobalItemWidget(
-                    title: "Total New Deaths",
+                    title: "New Deaths",
                     statistic: _newDeaths,
+                    icon: MaterialCommunityIcons.emoticon_sad,
                   ),
                   GlobalItemWidget(
-                    title: "Total New Recovered",
+                    title: "New Recovered",
                     statistic: _newRecovered,
+                    icon: MaterialCommunityIcons.emoticon_happy,
                   ),
                 ],
               ),

@@ -4,10 +4,12 @@ import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class GlobalItemWidget extends StatelessWidget {
+  final IconData icon;
   final String title;
   final String statistic;
 
   GlobalItemWidget({
+    this.icon,
     this.title,
     this.statistic,
   });
@@ -18,8 +20,8 @@ class GlobalItemWidget extends StatelessWidget {
       height: 200.sp,
       width: double.infinity,
       margin: EdgeInsetsResponsive.only(
-        left: 40,
-        right: 40,
+        left: 30,
+        right: 30,
         bottom: 20,
       ),
       decoration: BoxDecoration(
@@ -50,7 +52,7 @@ class GlobalItemWidget extends StatelessWidget {
               ),
             ),
             child: Icon(
-              MaterialCommunityIcons.google_analytics,
+              icon,
               size: 85.sp,
               color: Colors.white,
             ),

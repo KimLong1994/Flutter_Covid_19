@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/models/country_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-class ListView01Widget extends StatelessWidget {
-  // final List<dynamic> list;
+class ListViewWidget extends StatelessWidget {
+  final List<CountryItem> list;
 
-  // ListView01Widget({@required this.list});
+  ListViewWidget({@required this.list});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
-      itemCount: 100,
+      itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
+        final item = list[index];
         return Container(
           height: 200.sp,
-          width: double.infinity,
+          width: 200.sp,
           margin: EdgeInsetsResponsive.only(
-            left: 45,
-            right: 45,
-            bottom: 25,
+            left: 40,
+            right: 40,
+            bottom: 20,
           ),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -60,27 +62,26 @@ class ListView01Widget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsetsResponsive.only(
-                      bottom: 5,
-                    ),
-                    child: Text(
-                      "Total Infected On The World",
-                      style: GoogleFonts.robotoSlab(
-                        color: Colors.black54,
-                        fontSize: 55.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  Text(
+                    item.countryRegion,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 10,
+                    softWrap: true,
+                    style: GoogleFonts.robotoSlab(
+                      color: Colors.black54,
+                      fontSize: 55.sp,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Container(
-                    child: Text(
-                      "100,000 cases",
-                      style: GoogleFonts.robotoSlab(
-                        color: Color(0xFFe1e1e3),
-                        fontSize: 50.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
+                  Text(
+                    item.source,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 10,
+                    softWrap: true,
+                    style: GoogleFonts.robotoSlab(
+                      color: Color(0xFFe1e1e3),
+                      fontSize: 45.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
