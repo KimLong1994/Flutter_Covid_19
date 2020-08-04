@@ -24,8 +24,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("print main");
-
     ResponsiveWidgets.init(
       context,
       width: 1080,
@@ -38,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
       height: 1920,
       allowFontScaling: false,
       child: ContainerResponsive(
+        color: Color(0xFF1ec8c8),
         child: SafeArea(
           top: false,
           bottom: false,
@@ -49,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
               children: <Widget>[
                 _localData.allScreens[0]["screen"],
                 _localData.allScreens[1]["screen"],
-                _localData.allScreens[2]["screen"],
+                //_localData.allScreens[2]["screen"],
               ],
               index: _startIndex,
             ),

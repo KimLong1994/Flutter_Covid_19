@@ -43,7 +43,7 @@ class GlobalItemWidget extends StatelessWidget {
             width: 140.sp,
             margin: EdgeInsetsResponsive.only(
               left: 30,
-              right: 45,
+              right: 30,
             ),
             decoration: BoxDecoration(
               color: Color(0xFF1ec8c8),

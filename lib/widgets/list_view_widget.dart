@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercovid19/models/country_item.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
+import 'package:fluttercovid19/models/country_item.dart';
+import 'package:fluttercovid19/screens/country_item_screen.dart';
 
 class ListViewWidget extends StatelessWidget {
   final List<CountryItem> list;
@@ -17,76 +20,79 @@ class ListViewWidget extends StatelessWidget {
       itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
         final item = list[index];
-        return Container(
-          height: 200.sp,
-          width: 200.sp,
-          margin: EdgeInsetsResponsive.only(
-            left: 40,
-            right: 40,
-            bottom: 20,
-          ),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20.sp),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x0d000000),
-                  blurRadius: 4.sp,
-                  spreadRadius: 2.sp,
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CountryItemScreen(item: item)),
+            );
+          },
+          child: Container(
+            height: 200.sp,
+            width: double.infinity,
+            margin: EdgeInsetsResponsive.only(
+              left: 30,
+              right: 30,
+              bottom: 20,
+            ),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.sp),
                 ),
-              ]),
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 140.sp,
-                width: 140.sp,
-                margin: EdgeInsetsResponsive.only(
-                  left: 30,
-                  right: 45,
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xFF1ec8c8),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(9999.sp),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x0d000000),
+                    blurRadius: 4.sp,
+                    spreadRadius: 2.sp,
                   ),
-                ),
-                child: Icon(
-                  MaterialCommunityIcons.google_analytics,
-                  size: 85.sp,
-                  color: Colors.white,
-                ),
+                ]),
+            child: Padding(
+              padding: EdgeInsetsResponsive.symmetric(
+                horizontal: 30,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    item.countryRegion,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 10,
-                    softWrap: true,
-                    style: GoogleFonts.robotoSlab(
-                      color: Colors.black54,
-                      fontSize: 55.sp,
-                      fontWeight: FontWeight.w600,
+                  Container(
+                    margin: EdgeInsetsResponsive.only(right: 30),
+                    height: 100.sp,
+                    width: 100.sp,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1ec8c8),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(9999.sp),
+                      ),
+                    ),
+                    child: Icon(
+                      MaterialCommunityIcons.flag,
+                      color: Colors.white,
+                      size: 65.sp,
                     ),
                   ),
-                  Text(
-                    item.source,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 10,
-                    softWrap: true,
-                    style: GoogleFonts.robotoSlab(
-                      color: Color(0xFFe1e1e3),
-                      fontSize: 45.sp,
-                      fontWeight: FontWeight.w500,
+                  Container(
+                    child: Text(
+                      item.countryRegion,
+                      style: GoogleFonts.robotoSlab(
+                        color: Colors.black54,
+                        fontSize: 48.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 65.sp,
+                      color: Color(0xFF1ec8c8),
                     ),
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         );
       },
