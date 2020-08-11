@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttercovid19/screens/country_item_screen.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-import 'package:fluttercovid19/models/country_item.dart';
 import 'package:fluttercovid19/screens/country_item_screen.dart';
+import 'package:fluttercovid19/models/country_data_item.dart';
 
 class ListViewWidget extends StatelessWidget {
-  final List<CountryItem> list;
+  final List<CountryDataItem> list;
 
   ListViewWidget({@required this.list});
 
@@ -25,7 +27,8 @@ class ListViewWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => CountryItemScreen(item: item)),
+                builder: (context) => CountryItemScreen(item: item),
+              ),
             );
           },
           child: Container(
@@ -57,24 +60,30 @@ class ListViewWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsetsResponsive.only(right: 30),
-                    height: 100.sp,
-                    width: 100.sp,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF1ec8c8),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(9999.sp),
-                      ),
+                    margin: EdgeInsetsResponsive.only(
+                      right: 45,
                     ),
-                    child: Icon(
-                      MaterialCommunityIcons.flag,
-                      color: Colors.white,
-                      size: 65.sp,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      child: Image.network(
+                        item.countryInfo.flag,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          }
+                          return SpinKitFadingCircle(
+                            color: Color(0xFF1ec8c8),
+                            size: 80.sp,
+                          );
+                        },
+                      ),
                     ),
                   ),
                   Container(
                     child: Text(
-                      item.countryRegion,
+                      item.country,
                       style: GoogleFonts.robotoSlab(
                         color: Colors.black54,
                         fontSize: 48.sp,

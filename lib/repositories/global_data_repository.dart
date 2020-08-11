@@ -11,7 +11,6 @@ class GlobalDataRepository {
   final GlobalDataService _globalDataService = getIt.get<GlobalDataService>();
 
   Future<GlobalData> get({@required String path}) {
-    print(path);
     return _globalDataService.get(
       path: path,
       token: token,

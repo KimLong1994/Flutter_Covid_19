@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -11,18 +10,17 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
       backgroundColor: Color(0xFF1ec8c8),
-      centerTitle: true,
       title: Center(
         child: Text(
-          title,
+          "STAY HOME STAY SAFE",
           textAlign: TextAlign.center,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
           style: GoogleFonts.robotoSlab(
-            color: Colors.white,
-            fontSize: 58.sp,
+            fontSize: 55.sp,
             fontWeight: FontWeight.w600,
+            letterSpacing: 2.sp,
+            color: Colors.white,
           ),
         ),
       ),

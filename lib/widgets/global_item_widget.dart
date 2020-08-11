@@ -4,87 +4,149 @@ import 'package:responsive_widgets/responsive_widgets.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class GlobalItemWidget extends StatelessWidget {
-  final IconData icon;
   final String title;
-  final String statistic;
+  final String total;
+  final String news;
+  final double paddingBottom;
 
   GlobalItemWidget({
-    this.icon,
     this.title,
-    this.statistic,
+    this.total,
+    this.news,
+    this.paddingBottom,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.sp,
+      height: 400.sp,
       width: double.infinity,
       margin: EdgeInsetsResponsive.only(
-        left: 30,
-        right: 30,
-        bottom: 20,
+        left: 25,
+        right: 25,
+        bottom: paddingBottom,
       ),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(20.sp),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20.sp),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x0d000000),
+            blurRadius: 15.sp,
+            spreadRadius: 15.sp,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0x0d000000),
-              blurRadius: 4.sp,
-              spreadRadius: 2.sp,
-            ),
-          ]),
-      child: Row(
+        ],
+      ),
+      child: Column(
         children: <Widget>[
           Container(
-            height: 140.sp,
-            width: 140.sp,
-            margin: EdgeInsetsResponsive.only(
-              left: 30,
-              right: 30,
-            ),
+            height: 150.sp,
+            width: double.infinity,
             decoration: BoxDecoration(
               color: Color(0xFF1ec8c8),
-              borderRadius: BorderRadius.all(
-                Radius.circular(9999.sp),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.sp),
+                topRight: Radius.circular(20.sp),
               ),
             ),
-            child: Icon(
-              icon,
-              size: 85.sp,
-              color: Colors.white,
+            child: Center(
+              child: Text(
+                title,
+                style: GoogleFonts.robotoSlab(
+                  color: Colors.white,
+                  fontSize: 53.sp,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 2.sp,
+                ),
+              ),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsetsResponsive.only(
-                  bottom: 5,
-                ),
-                child: Text(
-                  title,
-                  style: GoogleFonts.robotoSlab(
-                    color: Colors.black54,
-                    fontSize: 55.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+          Container(
+            height: 250.sp,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20.sp),
+                bottomRight: Radius.circular(20.sp),
               ),
-              Container(
-                child: Text(
-                  statistic,
-                  style: GoogleFonts.robotoSlab(
-                    color: Colors.grey[500],
-                    fontSize: 50.sp,
-                    fontWeight: FontWeight.w500,
+            ),
+            child: Center(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsetsResponsive.only(
+                          top: 30,
+                          bottom: 15,
+                        ),
+                        child: Text(
+                          "TOTAL",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.robotoSlab(
+                            fontSize: 50.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 2.sp,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          total,
+                          style: GoogleFonts.robotoSlab(
+                            fontSize: 48.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 2.sp,
+                            color: Colors.grey[500],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                  SizedBoxResponsive(width: 150),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsetsResponsive.only(
+                          top: 30,
+                          bottom: 15,
+                        ),
+                        child: Text(
+                          "NEW",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.robotoSlab(
+                            fontSize: 50.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 2.sp,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          news,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.robotoSlab(
+                            fontSize: 48.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 2.sp,
+                            color: Colors.grey[500],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBoxResponsive(width: 50),
+                ],
               ),
-            ],
+            ),
           ),
         ],
       ),

@@ -5,14 +5,12 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:device_preview/device_preview.dart';
 
-import 'package:fluttercovid19/screens/countries_screen.dart';
-import 'package:fluttercovid19/screens/information_screen.dart';
-import 'package:fluttercovid19/screens/global_screen.dart';
-import 'package:fluttercovid19/screens/main_screen.dart';
+import 'package:fluttercovid19/screens/home_screen.dart';
 
-import 'package:fluttercovid19/data/local_data.dart';
 import 'package:fluttercovid19/services/global_data_service.dart';
 import 'package:fluttercovid19/repositories/global_data_repository.dart';
+import 'package:fluttercovid19/repositories/countries_data_repository.dart';
+import 'package:fluttercovid19/services/countries_data_service.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -23,17 +21,11 @@ Future setupGetIt() async {
   getIt.registerLazySingleton<GlobalDataRepository>(
     () => GlobalDataRepository(),
   );
-  getIt.registerLazySingleton<GlobalScreen>(
-    () => GlobalScreen(),
+  getIt.registerLazySingleton<CountriesDataService>(
+    () => CountriesDataService(Dio()),
   );
-  getIt.registerLazySingleton<CountriesScreen>(
-    () => CountriesScreen(),
-  );
-  getIt.registerLazySingleton<InformationScreen>(
-    () => InformationScreen(),
-  );
-  getIt.registerLazySingleton<LocalData>(
-    () => LocalData(),
+  getIt.registerLazySingleton<CountriesDataRepository>(
+    () => CountriesDataRepository(),
   );
 }
 
@@ -61,7 +53,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainScreen(),
+      home: HomeScreen(),
     );
   }
 }

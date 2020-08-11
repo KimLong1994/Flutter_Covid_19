@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:responsive_widgets/responsive_widgets.dart';
-import 'package:fluttercovid19/models/country_item.dart';
+import 'package:fluttercovid19/models/country_data_item.dart';
 
 class CountryItemScreen extends StatelessWidget {
-  final CountryItem item;
+  final CountryDataItem item;
 
   CountryItemScreen({
     this.item,
@@ -42,7 +42,7 @@ class CountryItemScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: Text(
-                  item.countryRegion,
+                  item.country,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.robotoSlab(
                     color: Colors.white,
@@ -54,15 +54,17 @@ class CountryItemScreen extends StatelessWidget {
               body: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    Text(item.countryRegion),
-                    Text(item.code),
-                    Text(item.slug),
-                    Text(item.confirmed.toString()),
-                    Text(item.deaths.toString()),
-                    Text(item.recovered.toString()),
-                    Text(item.newRecovered.toString()),
-                    Text(item.newConfirmed.toString()),
-                    Text(item.newDeaths.toString()),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Image.network(
+                        item.countryInfo.flag,
+                        width: 150.sp,
+                        height: 100.sp,
+                      ),
+                    ),
+                    Image.network(
+                      item.countryInfo.flag,
+                    ),
                   ],
                 ),
               ),

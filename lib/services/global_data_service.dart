@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../models/global_data.dart';
+import 'package:fluttercovid19/models/global_data.dart';
 
 part 'global_data_service.g.dart';
 
