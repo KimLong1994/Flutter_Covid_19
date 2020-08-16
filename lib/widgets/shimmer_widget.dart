@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shimmer/shimmer.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -10,122 +11,102 @@ class ShimmerWidget extends StatelessWidget {
       baseColor: Colors.grey[350],
       highlightColor: Color(0xFFEEEEEE),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsetsResponsive.only(
-              top: 50,
-              bottom: 50,
-              left: 25,
-              right: 25,
+            margin: EdgeInsetsResponsive.symmetric(
+              horizontal: 25,
+              vertical: 50,
             ),
-            width: double.infinity,
-            height: 150.sp,
-            decoration: BoxDecoration(
-              color: Color(0xFFBDBDBD),
-              borderRadius: BorderRadius.all(Radius.circular(20.sp)),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              margin: EdgeInsetsResponsive.only(
-                bottom: 15,
-                left: 25,
-              ),
-              width: 565.sp,
-              height: 50.sp,
-              decoration: BoxDecoration(
-                color: Color(0xFFBDBDBD),
-                borderRadius: BorderRadius.all(Radius.circular(20.sp)),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              margin: EdgeInsetsResponsive.only(
-                bottom: 50,
-                left: 25,
-              ),
-              width: 565.sp,
-              height: 50.sp,
-              decoration: BoxDecoration(
-                color: Color(0xFFBDBDBD),
-                borderRadius: BorderRadius.all(Radius.circular(20.sp)),
-              ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsetsResponsive.only(
+                    bottom: 15,
+                  ),
+                  width: 565.sp,
+                  height: 50.sp,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.all(Radius.circular(20.sp)),
+                  ),
+                ),
+                Container(
+                  width: 565.sp,
+                  height: 50.sp,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.all(Radius.circular(20.sp)),
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
-            height: 450.sp,
-            margin: EdgeInsetsResponsive.only(
-              left: 25,
-              bottom: 50,
-            ),
-            child: ListView.builder(
-              itemCount: 10,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  width: 850.sp,
-                  height: 450.sp,
-                  margin: EdgeInsetsResponsive.only(
-                    right: 25,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFBDBDBD),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x0d000000),
-                        blurRadius: 4.sp,
-                        spreadRadius: 2.sp,
+            child: Column(
+              children: <Widget>[
+                for (var i = 0; i <= 3; i++)
+                  Container(
+                    height: 400.sp,
+                    width: double.infinity,
+                    margin: EdgeInsetsResponsive.only(
+                      left: 25,
+                      right: 25,
+                      bottom: 30,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20.sp),
                       ),
-                    ],
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20.sp),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0x0d000000),
+                          blurRadius: 15.sp,
+                          spreadRadius: 15.sp,
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
+              ],
             ),
           ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              margin: EdgeInsetsResponsive.only(
-                bottom: 15,
-                left: 25,
-              ),
-              width: 565.sp,
-              height: 50.sp,
-              decoration: BoxDecoration(
-                color: Color(0xFFBDBDBD),
-                borderRadius: BorderRadius.all(Radius.circular(20.sp)),
-              ),
+          Container(
+            margin: EdgeInsetsResponsive.symmetric(
+              horizontal: 25,
+              vertical: 50,
             ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              margin: EdgeInsetsResponsive.only(
-                bottom: 50,
-                left: 25,
-              ),
-              width: 565.sp,
-              height: 50.sp,
-              decoration: BoxDecoration(
-                color: Color(0xFFBDBDBD),
-                borderRadius: BorderRadius.all(Radius.circular(20.sp)),
-              ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsetsResponsive.only(
+                    bottom: 15,
+                  ),
+                  width: 565.sp,
+                  height: 50.sp,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.all(Radius.circular(20.sp)),
+                  ),
+                ),
+                Container(
+                  width: 565.sp,
+                  height: 50.sp,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.all(Radius.circular(20.sp)),
+                  ),
+                ),
+              ],
             ),
           ),
           ListView.builder(
             shrinkWrap: true,
             physics: BouncingScrollPhysics(),
-            itemCount: 20,
+            itemCount: 15,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: 185.sp,
+                height: 200.sp,
                 width: double.infinity,
                 margin: EdgeInsetsResponsive.only(
                   left: 25,
@@ -133,7 +114,7 @@ class ShimmerWidget extends StatelessWidget {
                   bottom: 20,
                 ),
                 decoration: BoxDecoration(
-                  color: Color(0xFFBDBDBD),
+                  color: Colors.grey[350],
                   borderRadius: BorderRadius.all(
                     Radius.circular(20.sp),
                   ),

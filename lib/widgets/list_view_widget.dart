@@ -35,8 +35,8 @@ class ListViewWidget extends StatelessWidget {
             height: 200.sp,
             width: double.infinity,
             margin: EdgeInsetsResponsive.only(
-              left: 30,
-              right: 30,
+              left: 25,
+              right: 25,
               bottom: 20,
             ),
             decoration: BoxDecoration(
@@ -81,13 +81,18 @@ class ListViewWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    child: Text(
-                      item.country,
-                      style: GoogleFonts.robotoSlab(
-                        color: Colors.black54,
-                        fontSize: 48.sp,
-                        fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: Container(
+                      width: 1000.sp,
+                      child: Text(
+                        item.country,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                        style: GoogleFonts.robotoSlab(
+                          color: Colors.black54,
+                          fontSize: 48.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
